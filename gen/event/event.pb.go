@@ -58,150 +58,6 @@ func (*EmptyRequest) Descriptor() ([]byte, []int) {
 	return file_proto_event_event_proto_rawDescGZIP(), []int{0}
 }
 
-type GetAllResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	About         string                 `protobuf:"bytes,3,opt,name=about,proto3" json:"about,omitempty"`
-	StartDate     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
-	Location      string                 `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
-	Status        string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
-	MaxAttendees  int32                  `protobuf:"varint,7,opt,name=max_attendees,json=maxAttendees,proto3" json:"max_attendees,omitempty"`
-	Creator       string                 `protobuf:"bytes,8,opt,name=creator,proto3" json:"creator,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetAllResponse) Reset() {
-	*x = GetAllResponse{}
-	mi := &file_proto_event_event_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetAllResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetAllResponse) ProtoMessage() {}
-
-func (x *GetAllResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetAllResponse.ProtoReflect.Descriptor instead.
-func (*GetAllResponse) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *GetAllResponse) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *GetAllResponse) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
-}
-
-func (x *GetAllResponse) GetAbout() string {
-	if x != nil {
-		return x.About
-	}
-	return ""
-}
-
-func (x *GetAllResponse) GetStartDate() *timestamppb.Timestamp {
-	if x != nil {
-		return x.StartDate
-	}
-	return nil
-}
-
-func (x *GetAllResponse) GetLocation() string {
-	if x != nil {
-		return x.Location
-	}
-	return ""
-}
-
-func (x *GetAllResponse) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
-func (x *GetAllResponse) GetMaxAttendees() int32 {
-	if x != nil {
-		return x.MaxAttendees
-	}
-	return 0
-}
-
-func (x *GetAllResponse) GetCreator() string {
-	if x != nil {
-		return x.Creator
-	}
-	return ""
-}
-
-type GetByIdRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetByIdRequest) Reset() {
-	*x = GetByIdRequest{}
-	mi := &file_proto_event_event_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetByIdRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetByIdRequest) ProtoMessage() {}
-
-func (x *GetByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetByIdRequest.ProtoReflect.Descriptor instead.
-func (*GetByIdRequest) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *GetByIdRequest) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -218,7 +74,7 @@ type User struct {
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_proto_event_event_proto_msgTypes[3]
+	mi := &file_proto_event_event_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -230,7 +86,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[3]
+	mi := &file_proto_event_event_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -243,7 +99,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{3}
+	return file_proto_event_event_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *User) GetId() int64 {
@@ -302,9 +158,104 @@ func (x *User) GetCreator() string {
 	return ""
 }
 
-type GetByIdResponse struct {
+type GetAllResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Users         []*User                `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllResponse) Reset() {
+	*x = GetAllResponse{}
+	mi := &file_proto_event_event_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllResponse) ProtoMessage() {}
+
+func (x *GetAllResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_event_event_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllResponse.ProtoReflect.Descriptor instead.
+func (*GetAllResponse) Descriptor() ([]byte, []int) {
+	return file_proto_event_event_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetAllResponse) GetUsers() []*User {
+	if x != nil {
+		return x.Users
+	}
+	return nil
+}
+
+type GetByIdRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetByIdRequest) Reset() {
+	*x = GetByIdRequest{}
+	mi := &file_proto_event_event_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetByIdRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetByIdRequest) ProtoMessage() {}
+
+func (x *GetByIdRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_event_event_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetByIdRequest.ProtoReflect.Descriptor instead.
+func (*GetByIdRequest) Descriptor() ([]byte, []int) {
+	return file_proto_event_event_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetByIdRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type GetByIdResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	About         string                 `protobuf:"bytes,3,opt,name=about,proto3" json:"about,omitempty"`
+	StartDate     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
+	Location      string                 `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
+	Status        string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
+	MaxAttendees  int32                  `protobuf:"varint,7,opt,name=max_attendees,json=maxAttendees,proto3" json:"max_attendees,omitempty"`
+	Creator       string                 `protobuf:"bytes,8,opt,name=creator,proto3" json:"creator,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -339,11 +290,60 @@ func (*GetByIdResponse) Descriptor() ([]byte, []int) {
 	return file_proto_event_event_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *GetByIdResponse) GetUsers() []*User {
+func (x *GetByIdResponse) GetId() int64 {
 	if x != nil {
-		return x.Users
+		return x.Id
+	}
+	return 0
+}
+
+func (x *GetByIdResponse) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *GetByIdResponse) GetAbout() string {
+	if x != nil {
+		return x.About
+	}
+	return ""
+}
+
+func (x *GetByIdResponse) GetStartDate() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartDate
 	}
 	return nil
+}
+
+func (x *GetByIdResponse) GetLocation() string {
+	if x != nil {
+		return x.Location
+	}
+	return ""
+}
+
+func (x *GetByIdResponse) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *GetByIdResponse) GetMaxAttendees() int32 {
+	if x != nil {
+		return x.MaxAttendees
+	}
+	return 0
+}
+
+func (x *GetByIdResponse) GetCreator() string {
+	if x != nil {
+		return x.Creator
+	}
+	return ""
 }
 
 type CreateRequest struct {
@@ -759,19 +759,7 @@ var File_proto_event_event_proto protoreflect.FileDescriptor
 const file_proto_event_event_proto_rawDesc = "" +
 	"\n" +
 	"\x17proto/event/event.proto\x12\x05event\x1a\x1fgoogle/protobuf/timestamp.proto\"\x0e\n" +
-	"\fEmptyRequest\"\xfa\x01\n" +
-	"\x0eGetAllResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\tR\x05title\x12\x14\n" +
-	"\x05about\x18\x03 \x01(\tR\x05about\x129\n" +
-	"\n" +
-	"start_date\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartDate\x12\x1a\n" +
-	"\blocation\x18\x05 \x01(\tR\blocation\x12\x16\n" +
-	"\x06status\x18\x06 \x01(\tR\x06status\x12#\n" +
-	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees\x12\x18\n" +
-	"\acreator\x18\b \x01(\tR\acreator\" \n" +
-	"\x0eGetByIdRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"\xf0\x01\n" +
+	"\fEmptyRequest\"\xf0\x01\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x14\n" +
@@ -781,9 +769,21 @@ const file_proto_event_event_proto_rawDesc = "" +
 	"\blocation\x18\x05 \x01(\tR\blocation\x12\x16\n" +
 	"\x06status\x18\x06 \x01(\tR\x06status\x12#\n" +
 	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees\x12\x18\n" +
-	"\acreator\x18\b \x01(\tR\acreator\"4\n" +
-	"\x0fGetByIdResponse\x12!\n" +
-	"\x05users\x18\x01 \x03(\v2\v.event.UserR\x05users\"\xe9\x01\n" +
+	"\acreator\x18\b \x01(\tR\acreator\"3\n" +
+	"\x0eGetAllResponse\x12!\n" +
+	"\x05users\x18\x01 \x03(\v2\v.event.UserR\x05users\" \n" +
+	"\x0eGetByIdRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\xfb\x01\n" +
+	"\x0fGetByIdResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12\x14\n" +
+	"\x05about\x18\x03 \x01(\tR\x05about\x129\n" +
+	"\n" +
+	"start_date\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartDate\x12\x1a\n" +
+	"\blocation\x18\x05 \x01(\tR\blocation\x12\x16\n" +
+	"\x06status\x18\x06 \x01(\tR\x06status\x12#\n" +
+	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees\x12\x18\n" +
+	"\acreator\x18\b \x01(\tR\acreator\"\xe9\x01\n" +
 	"\rCreateRequest\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x14\n" +
 	"\x05about\x18\x03 \x01(\tR\x05about\x129\n" +
@@ -840,9 +840,9 @@ func file_proto_event_event_proto_rawDescGZIP() []byte {
 var file_proto_event_event_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_proto_event_event_proto_goTypes = []any{
 	(*EmptyRequest)(nil),          // 0: event.EmptyRequest
-	(*GetAllResponse)(nil),        // 1: event.GetAllResponse
-	(*GetByIdRequest)(nil),        // 2: event.GetByIdRequest
-	(*User)(nil),                  // 3: event.User
+	(*User)(nil),                  // 1: event.User
+	(*GetAllResponse)(nil),        // 2: event.GetAllResponse
+	(*GetByIdRequest)(nil),        // 3: event.GetByIdRequest
 	(*GetByIdResponse)(nil),       // 4: event.GetByIdResponse
 	(*CreateRequest)(nil),         // 5: event.CreateRequest
 	(*CreateResponse)(nil),        // 6: event.CreateResponse
@@ -853,18 +853,18 @@ var file_proto_event_event_proto_goTypes = []any{
 	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
 }
 var file_proto_event_event_proto_depIdxs = []int32{
-	11, // 0: event.GetAllResponse.start_date:type_name -> google.protobuf.Timestamp
-	11, // 1: event.User.start_date:type_name -> google.protobuf.Timestamp
-	3,  // 2: event.GetByIdResponse.users:type_name -> event.User
+	11, // 0: event.User.start_date:type_name -> google.protobuf.Timestamp
+	1,  // 1: event.GetAllResponse.users:type_name -> event.User
+	11, // 2: event.GetByIdResponse.start_date:type_name -> google.protobuf.Timestamp
 	11, // 3: event.CreateRequest.start_date:type_name -> google.protobuf.Timestamp
 	11, // 4: event.UpdateRequest.start_date:type_name -> google.protobuf.Timestamp
 	11, // 5: event.UpdateResponse.start_date:type_name -> google.protobuf.Timestamp
 	0,  // 6: event.Event.GetAll:input_type -> event.EmptyRequest
-	2,  // 7: event.Event.GetById:input_type -> event.GetByIdRequest
+	3,  // 7: event.Event.GetById:input_type -> event.GetByIdRequest
 	5,  // 8: event.Event.Create:input_type -> event.CreateRequest
 	7,  // 9: event.Event.DeleteById:input_type -> event.DeleteByIdRequest
 	9,  // 10: event.Event.Update:input_type -> event.UpdateRequest
-	1,  // 11: event.Event.GetAll:output_type -> event.GetAllResponse
+	2,  // 11: event.Event.GetAll:output_type -> event.GetAllResponse
 	4,  // 12: event.Event.GetById:output_type -> event.GetByIdResponse
 	6,  // 13: event.Event.Create:output_type -> event.CreateResponse
 	8,  // 14: event.Event.DeleteById:output_type -> event.DeleteByIdResponse

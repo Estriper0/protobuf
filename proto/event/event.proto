@@ -16,21 +16,6 @@ service Event {
 
 message EmptyRequest {}
 
-message GetAllResponse {
-    int64 id = 1;
-    string title = 2;
-    string about = 3;
-    google.protobuf.Timestamp start_date = 4;
-    string location = 5;
-    string status = 6;
-    int32 max_attendees = 7;
-    string creator = 8;
-}
-
-message GetByIdRequest {
-    int64 id = 1;
-}
-
 message User {
     int64 id = 1;
     string title = 2;
@@ -42,8 +27,23 @@ message User {
     string creator = 8;
 }
 
-message GetByIdResponse {
+message GetAllResponse {
     repeated User users = 1;
+}
+
+message GetByIdRequest {
+    int64 id = 1;
+}
+
+message GetByIdResponse {
+    int64 id = 1;
+    string title = 2;
+    string about = 3;
+    google.protobuf.Timestamp start_date = 4;
+    string location = 5;
+    string status = 6;
+    int32 max_attendees = 7;
+    string creator = 8;
 }
 
 message CreateRequest {
