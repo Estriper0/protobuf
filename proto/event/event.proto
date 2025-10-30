@@ -29,7 +29,7 @@ message EventElem {
 }
 
 message GetAllResponse {
-    repeated EventElem users = 1;
+    repeated EventElem events = 1;
 }
 
 message GetByIdRequest {

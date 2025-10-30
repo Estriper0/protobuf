@@ -196,7 +196,7 @@ func (x *EventElem) GetCreator() string {
 
 type GetAllResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Users         []*EventElem           `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	Events        []*EventElem           `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -231,9 +231,9 @@ func (*GetAllResponse) Descriptor() ([]byte, []int) {
 	return file_proto_event_event_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetAllResponse) GetUsers() []*EventElem {
+func (x *GetAllResponse) GetEvents() []*EventElem {
 	if x != nil {
-		return x.Users
+		return x.Events
 	}
 	return nil
 }
@@ -714,9 +714,9 @@ const file_proto_event_event_proto_rawDesc = "" +
 	"\blocation\x18\x05 \x01(\tR\blocation\x12\x16\n" +
 	"\x06status\x18\x06 \x01(\tR\x06status\x12#\n" +
 	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees\x12\x18\n" +
-	"\acreator\x18\b \x01(\tR\acreator\"8\n" +
-	"\x0eGetAllResponse\x12&\n" +
-	"\x05users\x18\x01 \x03(\v2\x10.event.EventElemR\x05users\" \n" +
+	"\acreator\x18\b \x01(\tR\acreator\":\n" +
+	"\x0eGetAllResponse\x12(\n" +
+	"\x06events\x18\x01 \x03(\v2\x10.event.EventElemR\x06events\" \n" +
 	"\x0eGetByIdRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"\xfb\x01\n" +
 	"\x0fGetByIdResponse\x12\x0e\n" +
@@ -790,7 +790,7 @@ var file_proto_event_event_proto_goTypes = []any{
 }
 var file_proto_event_event_proto_depIdxs = []int32{
 	11, // 0: event.EventElem.start_date:type_name -> google.protobuf.Timestamp
-	2,  // 1: event.GetAllResponse.users:type_name -> event.EventElem
+	2,  // 1: event.GetAllResponse.events:type_name -> event.EventElem
 	11, // 2: event.GetByIdResponse.start_date:type_name -> google.protobuf.Timestamp
 	11, // 3: event.CreateRequest.start_date:type_name -> google.protobuf.Timestamp
 	11, // 4: event.UpdateRequest.start_date:type_name -> google.protobuf.Timestamp
