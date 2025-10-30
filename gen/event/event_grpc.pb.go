@@ -34,7 +34,7 @@ type EventClient interface {
 	GetById(ctx context.Context, in *GetByIdRequest, opts ...grpc.CallOption) (*GetByIdResponse, error)
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 	DeleteById(ctx context.Context, in *DeleteByIdRequest, opts ...grpc.CallOption) (*DeleteByIdResponse, error)
-	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
+	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*EmptyResponse, error)
 }
 
 type eventClient struct {
@@ -85,9 +85,9 @@ func (c *eventClient) DeleteById(ctx context.Context, in *DeleteByIdRequest, opt
 	return out, nil
 }
 
-func (c *eventClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
+func (c *eventClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*EmptyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateResponse)
+	out := new(EmptyResponse)
 	err := c.cc.Invoke(ctx, Event_Update_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -103,7 +103,7 @@ type EventServer interface {
 	GetById(context.Context, *GetByIdRequest) (*GetByIdResponse, error)
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
 	DeleteById(context.Context, *DeleteByIdRequest) (*DeleteByIdResponse, error)
-	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
+	Update(context.Context, *UpdateRequest) (*EmptyResponse, error)
 	mustEmbedUnimplementedEventServer()
 }
 
@@ -126,7 +126,7 @@ func (UnimplementedEventServer) Create(context.Context, *CreateRequest) (*Create
 func (UnimplementedEventServer) DeleteById(context.Context, *DeleteByIdRequest) (*DeleteByIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteById not implemented")
 }
-func (UnimplementedEventServer) Update(context.Context, *UpdateRequest) (*UpdateResponse, error) {
+func (UnimplementedEventServer) Update(context.Context, *UpdateRequest) (*EmptyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
 func (UnimplementedEventServer) mustEmbedUnimplementedEventServer() {}

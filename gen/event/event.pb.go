@@ -58,6 +58,42 @@ func (*EmptyRequest) Descriptor() ([]byte, []int) {
 	return file_proto_event_event_proto_rawDescGZIP(), []int{0}
 }
 
+type EmptyResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EmptyResponse) Reset() {
+	*x = EmptyResponse{}
+	mi := &file_proto_event_event_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EmptyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EmptyResponse) ProtoMessage() {}
+
+func (x *EmptyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_event_event_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EmptyResponse.ProtoReflect.Descriptor instead.
+func (*EmptyResponse) Descriptor() ([]byte, []int) {
+	return file_proto_event_event_proto_rawDescGZIP(), []int{1}
+}
+
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -74,7 +110,7 @@ type User struct {
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_proto_event_event_proto_msgTypes[1]
+	mi := &file_proto_event_event_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -86,7 +122,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[1]
+	mi := &file_proto_event_event_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -99,7 +135,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{1}
+	return file_proto_event_event_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *User) GetId() int64 {
@@ -167,7 +203,7 @@ type GetAllResponse struct {
 
 func (x *GetAllResponse) Reset() {
 	*x = GetAllResponse{}
-	mi := &file_proto_event_event_proto_msgTypes[2]
+	mi := &file_proto_event_event_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -179,7 +215,7 @@ func (x *GetAllResponse) String() string {
 func (*GetAllResponse) ProtoMessage() {}
 
 func (x *GetAllResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[2]
+	mi := &file_proto_event_event_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -192,7 +228,7 @@ func (x *GetAllResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllResponse.ProtoReflect.Descriptor instead.
 func (*GetAllResponse) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{2}
+	return file_proto_event_event_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetAllResponse) GetUsers() []*User {
@@ -211,7 +247,7 @@ type GetByIdRequest struct {
 
 func (x *GetByIdRequest) Reset() {
 	*x = GetByIdRequest{}
-	mi := &file_proto_event_event_proto_msgTypes[3]
+	mi := &file_proto_event_event_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -223,7 +259,7 @@ func (x *GetByIdRequest) String() string {
 func (*GetByIdRequest) ProtoMessage() {}
 
 func (x *GetByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[3]
+	mi := &file_proto_event_event_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -236,7 +272,7 @@ func (x *GetByIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetByIdRequest.ProtoReflect.Descriptor instead.
 func (*GetByIdRequest) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{3}
+	return file_proto_event_event_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetByIdRequest) GetId() int64 {
@@ -262,7 +298,7 @@ type GetByIdResponse struct {
 
 func (x *GetByIdResponse) Reset() {
 	*x = GetByIdResponse{}
-	mi := &file_proto_event_event_proto_msgTypes[4]
+	mi := &file_proto_event_event_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -274,7 +310,7 @@ func (x *GetByIdResponse) String() string {
 func (*GetByIdResponse) ProtoMessage() {}
 
 func (x *GetByIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[4]
+	mi := &file_proto_event_event_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -287,7 +323,7 @@ func (x *GetByIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetByIdResponse.ProtoReflect.Descriptor instead.
 func (*GetByIdResponse) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{4}
+	return file_proto_event_event_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetByIdResponse) GetId() int64 {
@@ -361,7 +397,7 @@ type CreateRequest struct {
 
 func (x *CreateRequest) Reset() {
 	*x = CreateRequest{}
-	mi := &file_proto_event_event_proto_msgTypes[5]
+	mi := &file_proto_event_event_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -373,7 +409,7 @@ func (x *CreateRequest) String() string {
 func (*CreateRequest) ProtoMessage() {}
 
 func (x *CreateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[5]
+	mi := &file_proto_event_event_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -386,7 +422,7 @@ func (x *CreateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRequest.ProtoReflect.Descriptor instead.
 func (*CreateRequest) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{5}
+	return file_proto_event_event_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreateRequest) GetTitle() string {
@@ -447,7 +483,7 @@ type CreateResponse struct {
 
 func (x *CreateResponse) Reset() {
 	*x = CreateResponse{}
-	mi := &file_proto_event_event_proto_msgTypes[6]
+	mi := &file_proto_event_event_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -459,7 +495,7 @@ func (x *CreateResponse) String() string {
 func (*CreateResponse) ProtoMessage() {}
 
 func (x *CreateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[6]
+	mi := &file_proto_event_event_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -472,7 +508,7 @@ func (x *CreateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResponse.ProtoReflect.Descriptor instead.
 func (*CreateResponse) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{6}
+	return file_proto_event_event_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *CreateResponse) GetId() int64 {
@@ -491,7 +527,7 @@ type DeleteByIdRequest struct {
 
 func (x *DeleteByIdRequest) Reset() {
 	*x = DeleteByIdRequest{}
-	mi := &file_proto_event_event_proto_msgTypes[7]
+	mi := &file_proto_event_event_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -503,7 +539,7 @@ func (x *DeleteByIdRequest) String() string {
 func (*DeleteByIdRequest) ProtoMessage() {}
 
 func (x *DeleteByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[7]
+	mi := &file_proto_event_event_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -516,7 +552,7 @@ func (x *DeleteByIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteByIdRequest.ProtoReflect.Descriptor instead.
 func (*DeleteByIdRequest) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{7}
+	return file_proto_event_event_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *DeleteByIdRequest) GetId() int64 {
@@ -535,7 +571,7 @@ type DeleteByIdResponse struct {
 
 func (x *DeleteByIdResponse) Reset() {
 	*x = DeleteByIdResponse{}
-	mi := &file_proto_event_event_proto_msgTypes[8]
+	mi := &file_proto_event_event_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -547,7 +583,7 @@ func (x *DeleteByIdResponse) String() string {
 func (*DeleteByIdResponse) ProtoMessage() {}
 
 func (x *DeleteByIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[8]
+	mi := &file_proto_event_event_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -560,7 +596,7 @@ func (x *DeleteByIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteByIdResponse.ProtoReflect.Descriptor instead.
 func (*DeleteByIdResponse) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{8}
+	return file_proto_event_event_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DeleteByIdResponse) GetId() int64 {
@@ -585,7 +621,7 @@ type UpdateRequest struct {
 
 func (x *UpdateRequest) Reset() {
 	*x = UpdateRequest{}
-	mi := &file_proto_event_event_proto_msgTypes[9]
+	mi := &file_proto_event_event_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -597,7 +633,7 @@ func (x *UpdateRequest) String() string {
 func (*UpdateRequest) ProtoMessage() {}
 
 func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[9]
+	mi := &file_proto_event_event_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -610,7 +646,7 @@ func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRequest.ProtoReflect.Descriptor instead.
 func (*UpdateRequest) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{9}
+	return file_proto_event_event_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UpdateRequest) GetId() int64 {
@@ -662,104 +698,13 @@ func (x *UpdateRequest) GetMaxAttendees() int32 {
 	return 0
 }
 
-type UpdateResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	About         string                 `protobuf:"bytes,3,opt,name=about,proto3" json:"about,omitempty"`
-	StartDate     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
-	Location      string                 `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
-	Status        string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
-	MaxAttendees  int32                  `protobuf:"varint,7,opt,name=max_attendees,json=maxAttendees,proto3" json:"max_attendees,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateResponse) Reset() {
-	*x = UpdateResponse{}
-	mi := &file_proto_event_event_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateResponse) ProtoMessage() {}
-
-func (x *UpdateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_event_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateResponse.ProtoReflect.Descriptor instead.
-func (*UpdateResponse) Descriptor() ([]byte, []int) {
-	return file_proto_event_event_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *UpdateResponse) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *UpdateResponse) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
-}
-
-func (x *UpdateResponse) GetAbout() string {
-	if x != nil {
-		return x.About
-	}
-	return ""
-}
-
-func (x *UpdateResponse) GetStartDate() *timestamppb.Timestamp {
-	if x != nil {
-		return x.StartDate
-	}
-	return nil
-}
-
-func (x *UpdateResponse) GetLocation() string {
-	if x != nil {
-		return x.Location
-	}
-	return ""
-}
-
-func (x *UpdateResponse) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
-func (x *UpdateResponse) GetMaxAttendees() int32 {
-	if x != nil {
-		return x.MaxAttendees
-	}
-	return 0
-}
-
 var File_proto_event_event_proto protoreflect.FileDescriptor
 
 const file_proto_event_event_proto_rawDesc = "" +
 	"\n" +
 	"\x17proto/event/event.proto\x12\x05event\x1a\x1fgoogle/protobuf/timestamp.proto\"\x0e\n" +
-	"\fEmptyRequest\"\xf0\x01\n" +
+	"\fEmptyRequest\"\x0f\n" +
+	"\rEmptyResponse\"\xf0\x01\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x14\n" +
@@ -807,23 +752,14 @@ const file_proto_event_event_proto_rawDesc = "" +
 	"start_date\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartDate\x12\x1a\n" +
 	"\blocation\x18\x05 \x01(\tR\blocation\x12\x16\n" +
 	"\x06status\x18\x06 \x01(\tR\x06status\x12#\n" +
-	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees\"\xe0\x01\n" +
-	"\x0eUpdateResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\tR\x05title\x12\x14\n" +
-	"\x05about\x18\x03 \x01(\tR\x05about\x129\n" +
-	"\n" +
-	"start_date\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartDate\x12\x1a\n" +
-	"\blocation\x18\x05 \x01(\tR\blocation\x12\x16\n" +
-	"\x06status\x18\x06 \x01(\tR\x06status\x12#\n" +
-	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees2\xa8\x02\n" +
+	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees2\xa7\x02\n" +
 	"\x05Event\x124\n" +
 	"\x06GetAll\x12\x13.event.EmptyRequest\x1a\x15.event.GetAllResponse\x128\n" +
 	"\aGetById\x12\x15.event.GetByIdRequest\x1a\x16.event.GetByIdResponse\x125\n" +
 	"\x06Create\x12\x14.event.CreateRequest\x1a\x15.event.CreateResponse\x12A\n" +
 	"\n" +
-	"DeleteById\x12\x18.event.DeleteByIdRequest\x1a\x19.event.DeleteByIdResponse\x125\n" +
-	"\x06Update\x12\x14.event.UpdateRequest\x1a\x15.event.UpdateResponseB8Z6github.com/Estriper0/protobuf_eventhub/gen/event;eventb\x06proto3"
+	"DeleteById\x12\x18.event.DeleteByIdRequest\x1a\x19.event.DeleteByIdResponse\x124\n" +
+	"\x06Update\x12\x14.event.UpdateRequest\x1a\x14.event.EmptyResponseB8Z6github.com/Estriper0/protobuf_eventhub/gen/event;eventb\x06proto3"
 
 var (
 	file_proto_event_event_proto_rawDescOnce sync.Once
@@ -840,40 +776,39 @@ func file_proto_event_event_proto_rawDescGZIP() []byte {
 var file_proto_event_event_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_proto_event_event_proto_goTypes = []any{
 	(*EmptyRequest)(nil),          // 0: event.EmptyRequest
-	(*User)(nil),                  // 1: event.User
-	(*GetAllResponse)(nil),        // 2: event.GetAllResponse
-	(*GetByIdRequest)(nil),        // 3: event.GetByIdRequest
-	(*GetByIdResponse)(nil),       // 4: event.GetByIdResponse
-	(*CreateRequest)(nil),         // 5: event.CreateRequest
-	(*CreateResponse)(nil),        // 6: event.CreateResponse
-	(*DeleteByIdRequest)(nil),     // 7: event.DeleteByIdRequest
-	(*DeleteByIdResponse)(nil),    // 8: event.DeleteByIdResponse
-	(*UpdateRequest)(nil),         // 9: event.UpdateRequest
-	(*UpdateResponse)(nil),        // 10: event.UpdateResponse
+	(*EmptyResponse)(nil),         // 1: event.EmptyResponse
+	(*User)(nil),                  // 2: event.User
+	(*GetAllResponse)(nil),        // 3: event.GetAllResponse
+	(*GetByIdRequest)(nil),        // 4: event.GetByIdRequest
+	(*GetByIdResponse)(nil),       // 5: event.GetByIdResponse
+	(*CreateRequest)(nil),         // 6: event.CreateRequest
+	(*CreateResponse)(nil),        // 7: event.CreateResponse
+	(*DeleteByIdRequest)(nil),     // 8: event.DeleteByIdRequest
+	(*DeleteByIdResponse)(nil),    // 9: event.DeleteByIdResponse
+	(*UpdateRequest)(nil),         // 10: event.UpdateRequest
 	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
 }
 var file_proto_event_event_proto_depIdxs = []int32{
 	11, // 0: event.User.start_date:type_name -> google.protobuf.Timestamp
-	1,  // 1: event.GetAllResponse.users:type_name -> event.User
+	2,  // 1: event.GetAllResponse.users:type_name -> event.User
 	11, // 2: event.GetByIdResponse.start_date:type_name -> google.protobuf.Timestamp
 	11, // 3: event.CreateRequest.start_date:type_name -> google.protobuf.Timestamp
 	11, // 4: event.UpdateRequest.start_date:type_name -> google.protobuf.Timestamp
-	11, // 5: event.UpdateResponse.start_date:type_name -> google.protobuf.Timestamp
-	0,  // 6: event.Event.GetAll:input_type -> event.EmptyRequest
-	3,  // 7: event.Event.GetById:input_type -> event.GetByIdRequest
-	5,  // 8: event.Event.Create:input_type -> event.CreateRequest
-	7,  // 9: event.Event.DeleteById:input_type -> event.DeleteByIdRequest
-	9,  // 10: event.Event.Update:input_type -> event.UpdateRequest
-	2,  // 11: event.Event.GetAll:output_type -> event.GetAllResponse
-	4,  // 12: event.Event.GetById:output_type -> event.GetByIdResponse
-	6,  // 13: event.Event.Create:output_type -> event.CreateResponse
-	8,  // 14: event.Event.DeleteById:output_type -> event.DeleteByIdResponse
-	10, // 15: event.Event.Update:output_type -> event.UpdateResponse
-	11, // [11:16] is the sub-list for method output_type
-	6,  // [6:11] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	0,  // 5: event.Event.GetAll:input_type -> event.EmptyRequest
+	4,  // 6: event.Event.GetById:input_type -> event.GetByIdRequest
+	6,  // 7: event.Event.Create:input_type -> event.CreateRequest
+	8,  // 8: event.Event.DeleteById:input_type -> event.DeleteByIdRequest
+	10, // 9: event.Event.Update:input_type -> event.UpdateRequest
+	3,  // 10: event.Event.GetAll:output_type -> event.GetAllResponse
+	5,  // 11: event.Event.GetById:output_type -> event.GetByIdResponse
+	7,  // 12: event.Event.Create:output_type -> event.CreateResponse
+	9,  // 13: event.Event.DeleteById:output_type -> event.DeleteByIdResponse
+	1,  // 14: event.Event.Update:output_type -> event.EmptyResponse
+	10, // [10:15] is the sub-list for method output_type
+	5,  // [5:10] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_proto_event_event_proto_init() }

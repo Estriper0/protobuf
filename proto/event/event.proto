@@ -11,10 +11,11 @@ service Event {
     rpc GetById(GetByIdRequest) returns (GetByIdResponse);
     rpc Create(CreateRequest) returns (CreateResponse);
     rpc DeleteById(DeleteByIdRequest) returns (DeleteByIdResponse);
-    rpc Update(UpdateRequest) returns (UpdateResponse);
+    rpc Update(UpdateRequest) returns (EmptyResponse);
 }
 
 message EmptyRequest {}
+message EmptyResponse {}
 
 message User {
     int64 id = 1;
@@ -69,16 +70,6 @@ message DeleteByIdResponse {
 }
 
 message UpdateRequest {
-    int64 id = 1;
-    string title = 2;
-    string about = 3;
-    google.protobuf.Timestamp start_date = 4;
-    string location = 5;
-    string status = 6;
-    int32 max_attendees = 7;
-}
-
-message UpdateResponse {
     int64 id = 1;
     string title = 2;
     string about = 3;
