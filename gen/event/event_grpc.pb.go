@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v6.32.1
-// source: proto/event/event.proto
+// source: event/event.proto
 
 package event
 
@@ -19,11 +19,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Event_GetAll_FullMethodName     = "/event.Event/GetAll"
-	Event_GetById_FullMethodName    = "/event.Event/GetById"
-	Event_Create_FullMethodName     = "/event.Event/Create"
-	Event_DeleteById_FullMethodName = "/event.Event/DeleteById"
-	Event_Update_FullMethodName     = "/event.Event/Update"
+	Event_GetAll_FullMethodName          = "/event.Event/GetAll"
+	Event_GetAllByCreator_FullMethodName = "/event.Event/GetAllByCreator"
+	Event_GetAllByStatus_FullMethodName  = "/event.Event/GetAllByStatus"
+	Event_GetById_FullMethodName         = "/event.Event/GetById"
+	Event_Create_FullMethodName          = "/event.Event/Create"
+	Event_DeleteById_FullMethodName      = "/event.Event/DeleteById"
+	Event_Update_FullMethodName          = "/event.Event/Update"
 )
 
 // EventClient is the client API for Event service.
@@ -31,6 +33,8 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type EventClient interface {
 	GetAll(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*GetAllResponse, error)
+	GetAllByCreator(ctx context.Context, in *GetAllByCreatorRequest, opts ...grpc.CallOption) (*GetAllResponse, error)
+	GetAllByStatus(ctx context.Context, in *GetAllByStatusRequest, opts ...grpc.CallOption) (*GetAllResponse, error)
 	GetById(ctx context.Context, in *GetByIdRequest, opts ...grpc.CallOption) (*GetByIdResponse, error)
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 	DeleteById(ctx context.Context, in *DeleteByIdRequest, opts ...grpc.CallOption) (*DeleteByIdResponse, error)
@@ -49,6 +53,26 @@ func (c *eventClient) GetAll(ctx context.Context, in *EmptyRequest, opts ...grpc
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetAllResponse)
 	err := c.cc.Invoke(ctx, Event_GetAll_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *eventClient) GetAllByCreator(ctx context.Context, in *GetAllByCreatorRequest, opts ...grpc.CallOption) (*GetAllResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllResponse)
+	err := c.cc.Invoke(ctx, Event_GetAllByCreator_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *eventClient) GetAllByStatus(ctx context.Context, in *GetAllByStatusRequest, opts ...grpc.CallOption) (*GetAllResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllResponse)
+	err := c.cc.Invoke(ctx, Event_GetAllByStatus_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,6 +124,8 @@ func (c *eventClient) Update(ctx context.Context, in *UpdateRequest, opts ...grp
 // for forward compatibility.
 type EventServer interface {
 	GetAll(context.Context, *EmptyRequest) (*GetAllResponse, error)
+	GetAllByCreator(context.Context, *GetAllByCreatorRequest) (*GetAllResponse, error)
+	GetAllByStatus(context.Context, *GetAllByStatusRequest) (*GetAllResponse, error)
 	GetById(context.Context, *GetByIdRequest) (*GetByIdResponse, error)
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
 	DeleteById(context.Context, *DeleteByIdRequest) (*DeleteByIdResponse, error)
@@ -116,6 +142,12 @@ type UnimplementedEventServer struct{}
 
 func (UnimplementedEventServer) GetAll(context.Context, *EmptyRequest) (*GetAllResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
+}
+func (UnimplementedEventServer) GetAllByCreator(context.Context, *GetAllByCreatorRequest) (*GetAllResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllByCreator not implemented")
+}
+func (UnimplementedEventServer) GetAllByStatus(context.Context, *GetAllByStatusRequest) (*GetAllResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllByStatus not implemented")
 }
 func (UnimplementedEventServer) GetById(context.Context, *GetByIdRequest) (*GetByIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetById not implemented")
@@ -164,6 +196,42 @@ func _Event_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interf
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(EventServer).GetAll(ctx, req.(*EmptyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Event_GetAllByCreator_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllByCreatorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EventServer).GetAllByCreator(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Event_GetAllByCreator_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventServer).GetAllByCreator(ctx, req.(*GetAllByCreatorRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Event_GetAllByStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllByStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EventServer).GetAllByStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Event_GetAllByStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventServer).GetAllByStatus(ctx, req.(*GetAllByStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -252,6 +320,14 @@ var Event_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Event_GetAll_Handler,
 		},
 		{
+			MethodName: "GetAllByCreator",
+			Handler:    _Event_GetAllByCreator_Handler,
+		},
+		{
+			MethodName: "GetAllByStatus",
+			Handler:    _Event_GetAllByStatus_Handler,
+		},
+		{
 			MethodName: "GetById",
 			Handler:    _Event_GetById_Handler,
 		},
@@ -269,5 +345,5 @@ var Event_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/event/event.proto",
+	Metadata: "event/event.proto",
 }

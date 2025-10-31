@@ -8,6 +8,8 @@ option go_package = "github.com/Estriper0/protobuf_eventhub/gen/event;event";
 
 service Event {
     rpc GetAll(EmptyRequest) returns (GetAllResponse);
+    rpc GetAllByCreator(GetAllByCreatorRequest) returns (GetAllResponse);
+    rpc GetAllByStatus(GetAllByStatusRequest) returns (GetAllResponse);
     rpc GetById(GetByIdRequest) returns (GetByIdResponse);
     rpc Create(CreateRequest) returns (CreateResponse);
     rpc DeleteById(DeleteByIdRequest) returns (DeleteByIdResponse);
@@ -30,6 +32,14 @@ message EventElem {
 
 message GetAllResponse {
     repeated EventElem events = 1;
+}
+
+message GetAllByCreatorRequest {
+    string creator = 1;
+}
+
+message GetAllByStatusRequest {
+    string status = 1;
 }
 
 message GetByIdRequest {
