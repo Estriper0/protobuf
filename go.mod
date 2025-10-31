@@ -1,4 +1,4 @@
-module github.com/Estriper0/protobuf_eventhub
+module github.com/Estriper0/protobuf
 
 go 1.25.1
 
