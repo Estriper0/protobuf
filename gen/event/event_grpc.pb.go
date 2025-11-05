@@ -26,6 +26,9 @@ const (
 	Event_Create_FullMethodName          = "/event.Event/Create"
 	Event_DeleteById_FullMethodName      = "/event.Event/DeleteById"
 	Event_Update_FullMethodName          = "/event.Event/Update"
+	Event_Register_FullMethodName        = "/event.Event/Register"
+	Event_CancellRegister_FullMethodName = "/event.Event/CancellRegister"
+	Event_GetAllByUser_FullMethodName    = "/event.Event/GetAllByUser"
 )
 
 // EventClient is the client API for Event service.
@@ -39,6 +42,9 @@ type EventClient interface {
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 	DeleteById(ctx context.Context, in *DeleteByIdRequest, opts ...grpc.CallOption) (*DeleteByIdResponse, error)
 	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*EmptyResponse, error)
+	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*EmptyResponse, error)
+	CancellRegister(ctx context.Context, in *CancellRegisterRequest, opts ...grpc.CallOption) (*EmptyResponse, error)
+	GetAllByUser(ctx context.Context, in *GetAllByUserRequest, opts ...grpc.CallOption) (*GetAllByUserResponse, error)
 }
 
 type eventClient struct {
@@ -119,6 +125,36 @@ func (c *eventClient) Update(ctx context.Context, in *UpdateRequest, opts ...grp
 	return out, nil
 }
 
+func (c *eventClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*EmptyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(EmptyResponse)
+	err := c.cc.Invoke(ctx, Event_Register_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *eventClient) CancellRegister(ctx context.Context, in *CancellRegisterRequest, opts ...grpc.CallOption) (*EmptyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(EmptyResponse)
+	err := c.cc.Invoke(ctx, Event_CancellRegister_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *eventClient) GetAllByUser(ctx context.Context, in *GetAllByUserRequest, opts ...grpc.CallOption) (*GetAllByUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllByUserResponse)
+	err := c.cc.Invoke(ctx, Event_GetAllByUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // EventServer is the server API for Event service.
 // All implementations must embed UnimplementedEventServer
 // for forward compatibility.
@@ -130,6 +166,9 @@ type EventServer interface {
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
 	DeleteById(context.Context, *DeleteByIdRequest) (*DeleteByIdResponse, error)
 	Update(context.Context, *UpdateRequest) (*EmptyResponse, error)
+	Register(context.Context, *RegisterRequest) (*EmptyResponse, error)
+	CancellRegister(context.Context, *CancellRegisterRequest) (*EmptyResponse, error)
+	GetAllByUser(context.Context, *GetAllByUserRequest) (*GetAllByUserResponse, error)
 	mustEmbedUnimplementedEventServer()
 }
 
@@ -160,6 +199,15 @@ func (UnimplementedEventServer) DeleteById(context.Context, *DeleteByIdRequest) 
 }
 func (UnimplementedEventServer) Update(context.Context, *UpdateRequest) (*EmptyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
+}
+func (UnimplementedEventServer) Register(context.Context, *RegisterRequest) (*EmptyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
+}
+func (UnimplementedEventServer) CancellRegister(context.Context, *CancellRegisterRequest) (*EmptyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancellRegister not implemented")
+}
+func (UnimplementedEventServer) GetAllByUser(context.Context, *GetAllByUserRequest) (*GetAllByUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllByUser not implemented")
 }
 func (UnimplementedEventServer) mustEmbedUnimplementedEventServer() {}
 func (UnimplementedEventServer) testEmbeddedByValue()               {}
@@ -308,6 +356,60 @@ func _Event_Update_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Event_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EventServer).Register(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Event_Register_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventServer).Register(ctx, req.(*RegisterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Event_CancellRegister_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CancellRegisterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EventServer).CancellRegister(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Event_CancellRegister_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventServer).CancellRegister(ctx, req.(*CancellRegisterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Event_GetAllByUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllByUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EventServer).GetAllByUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Event_GetAllByUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventServer).GetAllByUser(ctx, req.(*GetAllByUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Event_ServiceDesc is the grpc.ServiceDesc for Event service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -342,6 +444,18 @@ var Event_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Update",
 			Handler:    _Event_Update_Handler,
+		},
+		{
+			MethodName: "Register",
+			Handler:    _Event_Register_Handler,
+		},
+		{
+			MethodName: "CancellRegister",
+			Handler:    _Event_CancellRegister_Handler,
+		},
+		{
+			MethodName: "GetAllByUser",
+			Handler:    _Event_GetAllByUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

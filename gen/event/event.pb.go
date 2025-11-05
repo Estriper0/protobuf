@@ -95,17 +95,18 @@ func (*EmptyResponse) Descriptor() ([]byte, []int) {
 }
 
 type EventElem struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	About         string                 `protobuf:"bytes,3,opt,name=about,proto3" json:"about,omitempty"`
-	StartDate     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
-	Location      string                 `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
-	Status        string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
-	MaxAttendees  int32                  `protobuf:"varint,7,opt,name=max_attendees,json=maxAttendees,proto3" json:"max_attendees,omitempty"`
-	Creator       string                 `protobuf:"bytes,8,opt,name=creator,proto3" json:"creator,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	Id                int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Title             string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	About             string                 `protobuf:"bytes,3,opt,name=about,proto3" json:"about,omitempty"`
+	StartDate         *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
+	Location          string                 `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
+	Status            string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
+	MaxAttendees      int32                  `protobuf:"varint,7,opt,name=max_attendees,json=maxAttendees,proto3" json:"max_attendees,omitempty"`
+	CurrentAttendance int32                  `protobuf:"varint,8,opt,name=current_attendance,json=currentAttendance,proto3" json:"current_attendance,omitempty"`
+	Creator           string                 `protobuf:"bytes,9,opt,name=creator,proto3" json:"creator,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *EventElem) Reset() {
@@ -183,6 +184,13 @@ func (x *EventElem) GetStatus() string {
 func (x *EventElem) GetMaxAttendees() int32 {
 	if x != nil {
 		return x.MaxAttendees
+	}
+	return 0
+}
+
+func (x *EventElem) GetCurrentAttendance() int32 {
+	if x != nil {
+		return x.CurrentAttendance
 	}
 	return 0
 }
@@ -371,17 +379,18 @@ func (x *GetByIdRequest) GetId() int64 {
 }
 
 type GetByIdResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	About         string                 `protobuf:"bytes,3,opt,name=about,proto3" json:"about,omitempty"`
-	StartDate     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
-	Location      string                 `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
-	Status        string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
-	MaxAttendees  int32                  `protobuf:"varint,7,opt,name=max_attendees,json=maxAttendees,proto3" json:"max_attendees,omitempty"`
-	Creator       string                 `protobuf:"bytes,8,opt,name=creator,proto3" json:"creator,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	Id                int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Title             string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	About             string                 `protobuf:"bytes,3,opt,name=about,proto3" json:"about,omitempty"`
+	StartDate         *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
+	Location          string                 `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
+	Status            string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
+	MaxAttendees      int32                  `protobuf:"varint,7,opt,name=max_attendees,json=maxAttendees,proto3" json:"max_attendees,omitempty"`
+	CurrentAttendance int32                  `protobuf:"varint,8,opt,name=current_attendance,json=currentAttendance,proto3" json:"current_attendance,omitempty"`
+	Creator           string                 `protobuf:"bytes,9,opt,name=creator,proto3" json:"creator,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *GetByIdResponse) Reset() {
@@ -459,6 +468,13 @@ func (x *GetByIdResponse) GetStatus() string {
 func (x *GetByIdResponse) GetMaxAttendees() int32 {
 	if x != nil {
 		return x.MaxAttendees
+	}
+	return 0
+}
+
+func (x *GetByIdResponse) GetCurrentAttendance() int32 {
+	if x != nil {
+		return x.CurrentAttendance
 	}
 	return 0
 }
@@ -786,13 +802,205 @@ func (x *UpdateRequest) GetMaxAttendees() int32 {
 	return 0
 }
 
+type RegisterRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	EventId       int64                  `protobuf:"varint,2,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterRequest) Reset() {
+	*x = RegisterRequest{}
+	mi := &file_event_event_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterRequest) ProtoMessage() {}
+
+func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_event_event_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
+func (*RegisterRequest) Descriptor() ([]byte, []int) {
+	return file_event_event_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *RegisterRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *RegisterRequest) GetEventId() int64 {
+	if x != nil {
+		return x.EventId
+	}
+	return 0
+}
+
+type CancellRegisterRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	EventId       int64                  `protobuf:"varint,2,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CancellRegisterRequest) Reset() {
+	*x = CancellRegisterRequest{}
+	mi := &file_event_event_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CancellRegisterRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancellRegisterRequest) ProtoMessage() {}
+
+func (x *CancellRegisterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_event_event_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancellRegisterRequest.ProtoReflect.Descriptor instead.
+func (*CancellRegisterRequest) Descriptor() ([]byte, []int) {
+	return file_event_event_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *CancellRegisterRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *CancellRegisterRequest) GetEventId() int64 {
+	if x != nil {
+		return x.EventId
+	}
+	return 0
+}
+
+type GetAllByUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllByUserRequest) Reset() {
+	*x = GetAllByUserRequest{}
+	mi := &file_event_event_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllByUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllByUserRequest) ProtoMessage() {}
+
+func (x *GetAllByUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_event_event_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllByUserRequest.ProtoReflect.Descriptor instead.
+func (*GetAllByUserRequest) Descriptor() ([]byte, []int) {
+	return file_event_event_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GetAllByUserRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+type GetAllByUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Events        []*EventElem           `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllByUserResponse) Reset() {
+	*x = GetAllByUserResponse{}
+	mi := &file_event_event_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllByUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllByUserResponse) ProtoMessage() {}
+
+func (x *GetAllByUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_event_event_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllByUserResponse.ProtoReflect.Descriptor instead.
+func (*GetAllByUserResponse) Descriptor() ([]byte, []int) {
+	return file_event_event_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetAllByUserResponse) GetEvents() []*EventElem {
+	if x != nil {
+		return x.Events
+	}
+	return nil
+}
+
 var File_event_event_proto protoreflect.FileDescriptor
 
 const file_event_event_proto_rawDesc = "" +
 	"\n" +
 	"\x11event/event.proto\x12\x05event\x1a\x1fgoogle/protobuf/timestamp.proto\"\x0e\n" +
 	"\fEmptyRequest\"\x0f\n" +
-	"\rEmptyResponse\"\xf5\x01\n" +
+	"\rEmptyResponse\"\xa4\x02\n" +
 	"\tEventElem\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x14\n" +
@@ -801,8 +1009,9 @@ const file_event_event_proto_rawDesc = "" +
 	"start_date\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartDate\x12\x1a\n" +
 	"\blocation\x18\x05 \x01(\tR\blocation\x12\x16\n" +
 	"\x06status\x18\x06 \x01(\tR\x06status\x12#\n" +
-	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees\x12\x18\n" +
-	"\acreator\x18\b \x01(\tR\acreator\":\n" +
+	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees\x12-\n" +
+	"\x12current_attendance\x18\b \x01(\x05R\x11currentAttendance\x12\x18\n" +
+	"\acreator\x18\t \x01(\tR\acreator\":\n" +
 	"\x0eGetAllResponse\x12(\n" +
 	"\x06events\x18\x01 \x03(\v2\x10.event.EventElemR\x06events\"2\n" +
 	"\x16GetAllByCreatorRequest\x12\x18\n" +
@@ -810,7 +1019,7 @@ const file_event_event_proto_rawDesc = "" +
 	"\x15GetAllByStatusRequest\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\" \n" +
 	"\x0eGetByIdRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"\xfb\x01\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\xaa\x02\n" +
 	"\x0fGetByIdResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x14\n" +
@@ -819,8 +1028,9 @@ const file_event_event_proto_rawDesc = "" +
 	"start_date\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartDate\x12\x1a\n" +
 	"\blocation\x18\x05 \x01(\tR\blocation\x12\x16\n" +
 	"\x06status\x18\x06 \x01(\tR\x06status\x12#\n" +
-	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees\x12\x18\n" +
-	"\acreator\x18\b \x01(\tR\acreator\"\xe9\x01\n" +
+	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees\x12-\n" +
+	"\x12current_attendance\x18\b \x01(\x05R\x11currentAttendance\x12\x18\n" +
+	"\acreator\x18\t \x01(\tR\acreator\"\xe9\x01\n" +
 	"\rCreateRequest\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x14\n" +
 	"\x05about\x18\x03 \x01(\tR\x05about\x129\n" +
@@ -844,7 +1054,17 @@ const file_event_event_proto_rawDesc = "" +
 	"start_date\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartDate\x12\x1a\n" +
 	"\blocation\x18\x05 \x01(\tR\blocation\x12\x16\n" +
 	"\x06status\x18\x06 \x01(\tR\x06status\x12#\n" +
-	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees2\xb7\x03\n" +
+	"\rmax_attendees\x18\a \x01(\x05R\fmaxAttendees\"E\n" +
+	"\x0fRegisterRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x19\n" +
+	"\bevent_id\x18\x02 \x01(\x03R\aeventId\"L\n" +
+	"\x16CancellRegisterRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x19\n" +
+	"\bevent_id\x18\x02 \x01(\x03R\aeventId\".\n" +
+	"\x13GetAllByUserRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"@\n" +
+	"\x14GetAllByUserResponse\x12(\n" +
+	"\x06events\x18\x01 \x03(\v2\x10.event.EventElemR\x06events2\x82\x05\n" +
 	"\x05Event\x124\n" +
 	"\x06GetAll\x12\x13.event.EmptyRequest\x1a\x15.event.GetAllResponse\x12G\n" +
 	"\x0fGetAllByCreator\x12\x1d.event.GetAllByCreatorRequest\x1a\x15.event.GetAllResponse\x12E\n" +
@@ -853,7 +1073,10 @@ const file_event_event_proto_rawDesc = "" +
 	"\x06Create\x12\x14.event.CreateRequest\x1a\x15.event.CreateResponse\x12A\n" +
 	"\n" +
 	"DeleteById\x12\x18.event.DeleteByIdRequest\x1a\x19.event.DeleteByIdResponse\x124\n" +
-	"\x06Update\x12\x14.event.UpdateRequest\x1a\x14.event.EmptyResponseB8Z6github.com/Estriper0/protobuf_eventhub/gen/event;eventb\x06proto3"
+	"\x06Update\x12\x14.event.UpdateRequest\x1a\x14.event.EmptyResponse\x128\n" +
+	"\bRegister\x12\x16.event.RegisterRequest\x1a\x14.event.EmptyResponse\x12F\n" +
+	"\x0fCancellRegister\x12\x1d.event.CancellRegisterRequest\x1a\x14.event.EmptyResponse\x12G\n" +
+	"\fGetAllByUser\x12\x1a.event.GetAllByUserRequest\x1a\x1b.event.GetAllByUserResponseB8Z6github.com/Estriper0/protobuf_eventhub/gen/event;eventb\x06proto3"
 
 var (
 	file_event_event_proto_rawDescOnce sync.Once
@@ -867,7 +1090,7 @@ func file_event_event_proto_rawDescGZIP() []byte {
 	return file_event_event_proto_rawDescData
 }
 
-var file_event_event_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_event_event_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_event_event_proto_goTypes = []any{
 	(*EmptyRequest)(nil),           // 0: event.EmptyRequest
 	(*EmptyResponse)(nil),          // 1: event.EmptyResponse
@@ -882,33 +1105,44 @@ var file_event_event_proto_goTypes = []any{
 	(*DeleteByIdRequest)(nil),      // 10: event.DeleteByIdRequest
 	(*DeleteByIdResponse)(nil),     // 11: event.DeleteByIdResponse
 	(*UpdateRequest)(nil),          // 12: event.UpdateRequest
-	(*timestamppb.Timestamp)(nil),  // 13: google.protobuf.Timestamp
+	(*RegisterRequest)(nil),        // 13: event.RegisterRequest
+	(*CancellRegisterRequest)(nil), // 14: event.CancellRegisterRequest
+	(*GetAllByUserRequest)(nil),    // 15: event.GetAllByUserRequest
+	(*GetAllByUserResponse)(nil),   // 16: event.GetAllByUserResponse
+	(*timestamppb.Timestamp)(nil),  // 17: google.protobuf.Timestamp
 }
 var file_event_event_proto_depIdxs = []int32{
-	13, // 0: event.EventElem.start_date:type_name -> google.protobuf.Timestamp
+	17, // 0: event.EventElem.start_date:type_name -> google.protobuf.Timestamp
 	2,  // 1: event.GetAllResponse.events:type_name -> event.EventElem
-	13, // 2: event.GetByIdResponse.start_date:type_name -> google.protobuf.Timestamp
-	13, // 3: event.CreateRequest.start_date:type_name -> google.protobuf.Timestamp
-	13, // 4: event.UpdateRequest.start_date:type_name -> google.protobuf.Timestamp
-	0,  // 5: event.Event.GetAll:input_type -> event.EmptyRequest
-	4,  // 6: event.Event.GetAllByCreator:input_type -> event.GetAllByCreatorRequest
-	5,  // 7: event.Event.GetAllByStatus:input_type -> event.GetAllByStatusRequest
-	6,  // 8: event.Event.GetById:input_type -> event.GetByIdRequest
-	8,  // 9: event.Event.Create:input_type -> event.CreateRequest
-	10, // 10: event.Event.DeleteById:input_type -> event.DeleteByIdRequest
-	12, // 11: event.Event.Update:input_type -> event.UpdateRequest
-	3,  // 12: event.Event.GetAll:output_type -> event.GetAllResponse
-	3,  // 13: event.Event.GetAllByCreator:output_type -> event.GetAllResponse
-	3,  // 14: event.Event.GetAllByStatus:output_type -> event.GetAllResponse
-	7,  // 15: event.Event.GetById:output_type -> event.GetByIdResponse
-	9,  // 16: event.Event.Create:output_type -> event.CreateResponse
-	11, // 17: event.Event.DeleteById:output_type -> event.DeleteByIdResponse
-	1,  // 18: event.Event.Update:output_type -> event.EmptyResponse
-	12, // [12:19] is the sub-list for method output_type
-	5,  // [5:12] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	17, // 2: event.GetByIdResponse.start_date:type_name -> google.protobuf.Timestamp
+	17, // 3: event.CreateRequest.start_date:type_name -> google.protobuf.Timestamp
+	17, // 4: event.UpdateRequest.start_date:type_name -> google.protobuf.Timestamp
+	2,  // 5: event.GetAllByUserResponse.events:type_name -> event.EventElem
+	0,  // 6: event.Event.GetAll:input_type -> event.EmptyRequest
+	4,  // 7: event.Event.GetAllByCreator:input_type -> event.GetAllByCreatorRequest
+	5,  // 8: event.Event.GetAllByStatus:input_type -> event.GetAllByStatusRequest
+	6,  // 9: event.Event.GetById:input_type -> event.GetByIdRequest
+	8,  // 10: event.Event.Create:input_type -> event.CreateRequest
+	10, // 11: event.Event.DeleteById:input_type -> event.DeleteByIdRequest
+	12, // 12: event.Event.Update:input_type -> event.UpdateRequest
+	13, // 13: event.Event.Register:input_type -> event.RegisterRequest
+	14, // 14: event.Event.CancellRegister:input_type -> event.CancellRegisterRequest
+	15, // 15: event.Event.GetAllByUser:input_type -> event.GetAllByUserRequest
+	3,  // 16: event.Event.GetAll:output_type -> event.GetAllResponse
+	3,  // 17: event.Event.GetAllByCreator:output_type -> event.GetAllResponse
+	3,  // 18: event.Event.GetAllByStatus:output_type -> event.GetAllResponse
+	7,  // 19: event.Event.GetById:output_type -> event.GetByIdResponse
+	9,  // 20: event.Event.Create:output_type -> event.CreateResponse
+	11, // 21: event.Event.DeleteById:output_type -> event.DeleteByIdResponse
+	1,  // 22: event.Event.Update:output_type -> event.EmptyResponse
+	1,  // 23: event.Event.Register:output_type -> event.EmptyResponse
+	1,  // 24: event.Event.CancellRegister:output_type -> event.EmptyResponse
+	16, // 25: event.Event.GetAllByUser:output_type -> event.GetAllByUserResponse
+	16, // [16:26] is the sub-list for method output_type
+	6,  // [6:16] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_event_event_proto_init() }
@@ -922,7 +1156,7 @@ func file_event_event_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_event_event_proto_rawDesc), len(file_event_event_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
