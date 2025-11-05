@@ -17,6 +17,7 @@ service Event {
     rpc Register(RegisterRequest) returns (EmptyResponse);
     rpc CancellRegister(CancellRegisterRequest) returns (EmptyResponse);
     rpc GetAllByUser(GetAllByUserRequest) returns (GetAllByUserResponse);
+    rpc GetAllUsersByEvent(GetAllUsersByEventRequest) returns (GetAllUsersByEventResponse);
 }
 
 message EmptyRequest {}
@@ -110,4 +111,12 @@ message GetAllByUserRequest {
 
 message GetAllByUserResponse {
     repeated EventElem events = 1;
+}
+
+message GetAllUsersByEventRequest {
+    string event_id = 1;
+}
+
+message GetAllUsersByEventResponse {
+    repeated string users_id = 1;
 }

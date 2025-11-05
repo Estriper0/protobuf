@@ -19,16 +19,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Event_GetAll_FullMethodName          = "/event.Event/GetAll"
-	Event_GetAllByCreator_FullMethodName = "/event.Event/GetAllByCreator"
-	Event_GetAllByStatus_FullMethodName  = "/event.Event/GetAllByStatus"
-	Event_GetById_FullMethodName         = "/event.Event/GetById"
-	Event_Create_FullMethodName          = "/event.Event/Create"
-	Event_DeleteById_FullMethodName      = "/event.Event/DeleteById"
-	Event_Update_FullMethodName          = "/event.Event/Update"
-	Event_Register_FullMethodName        = "/event.Event/Register"
-	Event_CancellRegister_FullMethodName = "/event.Event/CancellRegister"
-	Event_GetAllByUser_FullMethodName    = "/event.Event/GetAllByUser"
+	Event_GetAll_FullMethodName             = "/event.Event/GetAll"
+	Event_GetAllByCreator_FullMethodName    = "/event.Event/GetAllByCreator"
+	Event_GetAllByStatus_FullMethodName     = "/event.Event/GetAllByStatus"
+	Event_GetById_FullMethodName            = "/event.Event/GetById"
+	Event_Create_FullMethodName             = "/event.Event/Create"
+	Event_DeleteById_FullMethodName         = "/event.Event/DeleteById"
+	Event_Update_FullMethodName             = "/event.Event/Update"
+	Event_Register_FullMethodName           = "/event.Event/Register"
+	Event_CancellRegister_FullMethodName    = "/event.Event/CancellRegister"
+	Event_GetAllByUser_FullMethodName       = "/event.Event/GetAllByUser"
+	Event_GetAllUsersByEvent_FullMethodName = "/event.Event/GetAllUsersByEvent"
 )
 
 // EventClient is the client API for Event service.
@@ -45,6 +46,7 @@ type EventClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*EmptyResponse, error)
 	CancellRegister(ctx context.Context, in *CancellRegisterRequest, opts ...grpc.CallOption) (*EmptyResponse, error)
 	GetAllByUser(ctx context.Context, in *GetAllByUserRequest, opts ...grpc.CallOption) (*GetAllByUserResponse, error)
+	GetAllUsersByEvent(ctx context.Context, in *GetAllUsersByEventRequest, opts ...grpc.CallOption) (*GetAllUsersByEventResponse, error)
 }
 
 type eventClient struct {
@@ -155,6 +157,16 @@ func (c *eventClient) GetAllByUser(ctx context.Context, in *GetAllByUserRequest,
 	return out, nil
 }
 
+func (c *eventClient) GetAllUsersByEvent(ctx context.Context, in *GetAllUsersByEventRequest, opts ...grpc.CallOption) (*GetAllUsersByEventResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllUsersByEventResponse)
+	err := c.cc.Invoke(ctx, Event_GetAllUsersByEvent_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // EventServer is the server API for Event service.
 // All implementations must embed UnimplementedEventServer
 // for forward compatibility.
@@ -169,6 +181,7 @@ type EventServer interface {
 	Register(context.Context, *RegisterRequest) (*EmptyResponse, error)
 	CancellRegister(context.Context, *CancellRegisterRequest) (*EmptyResponse, error)
 	GetAllByUser(context.Context, *GetAllByUserRequest) (*GetAllByUserResponse, error)
+	GetAllUsersByEvent(context.Context, *GetAllUsersByEventRequest) (*GetAllUsersByEventResponse, error)
 	mustEmbedUnimplementedEventServer()
 }
 
@@ -208,6 +221,9 @@ func (UnimplementedEventServer) CancellRegister(context.Context, *CancellRegiste
 }
 func (UnimplementedEventServer) GetAllByUser(context.Context, *GetAllByUserRequest) (*GetAllByUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllByUser not implemented")
+}
+func (UnimplementedEventServer) GetAllUsersByEvent(context.Context, *GetAllUsersByEventRequest) (*GetAllUsersByEventResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllUsersByEvent not implemented")
 }
 func (UnimplementedEventServer) mustEmbedUnimplementedEventServer() {}
 func (UnimplementedEventServer) testEmbeddedByValue()               {}
@@ -410,6 +426,24 @@ func _Event_GetAllByUser_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Event_GetAllUsersByEvent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllUsersByEventRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EventServer).GetAllUsersByEvent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Event_GetAllUsersByEvent_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventServer).GetAllUsersByEvent(ctx, req.(*GetAllUsersByEventRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Event_ServiceDesc is the grpc.ServiceDesc for Event service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -456,6 +490,10 @@ var Event_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllByUser",
 			Handler:    _Event_GetAllByUser_Handler,
+		},
+		{
+			MethodName: "GetAllUsersByEvent",
+			Handler:    _Event_GetAllUsersByEvent_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

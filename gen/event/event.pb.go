@@ -994,6 +994,94 @@ func (x *GetAllByUserResponse) GetEvents() []*EventElem {
 	return nil
 }
 
+type GetAllUsersByEventRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EventId       string                 `protobuf:"bytes,1,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllUsersByEventRequest) Reset() {
+	*x = GetAllUsersByEventRequest{}
+	mi := &file_event_event_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllUsersByEventRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllUsersByEventRequest) ProtoMessage() {}
+
+func (x *GetAllUsersByEventRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_event_event_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllUsersByEventRequest.ProtoReflect.Descriptor instead.
+func (*GetAllUsersByEventRequest) Descriptor() ([]byte, []int) {
+	return file_event_event_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GetAllUsersByEventRequest) GetEventId() string {
+	if x != nil {
+		return x.EventId
+	}
+	return ""
+}
+
+type GetAllUsersByEventResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UsersId       []string               `protobuf:"bytes,1,rep,name=users_id,json=usersId,proto3" json:"users_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllUsersByEventResponse) Reset() {
+	*x = GetAllUsersByEventResponse{}
+	mi := &file_event_event_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllUsersByEventResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllUsersByEventResponse) ProtoMessage() {}
+
+func (x *GetAllUsersByEventResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_event_event_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllUsersByEventResponse.ProtoReflect.Descriptor instead.
+func (*GetAllUsersByEventResponse) Descriptor() ([]byte, []int) {
+	return file_event_event_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetAllUsersByEventResponse) GetUsersId() []string {
+	if x != nil {
+		return x.UsersId
+	}
+	return nil
+}
+
 var File_event_event_proto protoreflect.FileDescriptor
 
 const file_event_event_proto_rawDesc = "" +
@@ -1064,7 +1152,11 @@ const file_event_event_proto_rawDesc = "" +
 	"\x13GetAllByUserRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"@\n" +
 	"\x14GetAllByUserResponse\x12(\n" +
-	"\x06events\x18\x01 \x03(\v2\x10.event.EventElemR\x06events2\x82\x05\n" +
+	"\x06events\x18\x01 \x03(\v2\x10.event.EventElemR\x06events\"6\n" +
+	"\x19GetAllUsersByEventRequest\x12\x19\n" +
+	"\bevent_id\x18\x01 \x01(\tR\aeventId\"7\n" +
+	"\x1aGetAllUsersByEventResponse\x12\x19\n" +
+	"\busers_id\x18\x01 \x03(\tR\ausersId2\xdd\x05\n" +
 	"\x05Event\x124\n" +
 	"\x06GetAll\x12\x13.event.EmptyRequest\x1a\x15.event.GetAllResponse\x12G\n" +
 	"\x0fGetAllByCreator\x12\x1d.event.GetAllByCreatorRequest\x1a\x15.event.GetAllResponse\x12E\n" +
@@ -1076,7 +1168,8 @@ const file_event_event_proto_rawDesc = "" +
 	"\x06Update\x12\x14.event.UpdateRequest\x1a\x14.event.EmptyResponse\x128\n" +
 	"\bRegister\x12\x16.event.RegisterRequest\x1a\x14.event.EmptyResponse\x12F\n" +
 	"\x0fCancellRegister\x12\x1d.event.CancellRegisterRequest\x1a\x14.event.EmptyResponse\x12G\n" +
-	"\fGetAllByUser\x12\x1a.event.GetAllByUserRequest\x1a\x1b.event.GetAllByUserResponseB8Z6github.com/Estriper0/protobuf_eventhub/gen/event;eventb\x06proto3"
+	"\fGetAllByUser\x12\x1a.event.GetAllByUserRequest\x1a\x1b.event.GetAllByUserResponse\x12Y\n" +
+	"\x12GetAllUsersByEvent\x12 .event.GetAllUsersByEventRequest\x1a!.event.GetAllUsersByEventResponseB8Z6github.com/Estriper0/protobuf_eventhub/gen/event;eventb\x06proto3"
 
 var (
 	file_event_event_proto_rawDescOnce sync.Once
@@ -1090,33 +1183,35 @@ func file_event_event_proto_rawDescGZIP() []byte {
 	return file_event_event_proto_rawDescData
 }
 
-var file_event_event_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_event_event_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_event_event_proto_goTypes = []any{
-	(*EmptyRequest)(nil),           // 0: event.EmptyRequest
-	(*EmptyResponse)(nil),          // 1: event.EmptyResponse
-	(*EventElem)(nil),              // 2: event.EventElem
-	(*GetAllResponse)(nil),         // 3: event.GetAllResponse
-	(*GetAllByCreatorRequest)(nil), // 4: event.GetAllByCreatorRequest
-	(*GetAllByStatusRequest)(nil),  // 5: event.GetAllByStatusRequest
-	(*GetByIdRequest)(nil),         // 6: event.GetByIdRequest
-	(*GetByIdResponse)(nil),        // 7: event.GetByIdResponse
-	(*CreateRequest)(nil),          // 8: event.CreateRequest
-	(*CreateResponse)(nil),         // 9: event.CreateResponse
-	(*DeleteByIdRequest)(nil),      // 10: event.DeleteByIdRequest
-	(*DeleteByIdResponse)(nil),     // 11: event.DeleteByIdResponse
-	(*UpdateRequest)(nil),          // 12: event.UpdateRequest
-	(*RegisterRequest)(nil),        // 13: event.RegisterRequest
-	(*CancellRegisterRequest)(nil), // 14: event.CancellRegisterRequest
-	(*GetAllByUserRequest)(nil),    // 15: event.GetAllByUserRequest
-	(*GetAllByUserResponse)(nil),   // 16: event.GetAllByUserResponse
-	(*timestamppb.Timestamp)(nil),  // 17: google.protobuf.Timestamp
+	(*EmptyRequest)(nil),               // 0: event.EmptyRequest
+	(*EmptyResponse)(nil),              // 1: event.EmptyResponse
+	(*EventElem)(nil),                  // 2: event.EventElem
+	(*GetAllResponse)(nil),             // 3: event.GetAllResponse
+	(*GetAllByCreatorRequest)(nil),     // 4: event.GetAllByCreatorRequest
+	(*GetAllByStatusRequest)(nil),      // 5: event.GetAllByStatusRequest
+	(*GetByIdRequest)(nil),             // 6: event.GetByIdRequest
+	(*GetByIdResponse)(nil),            // 7: event.GetByIdResponse
+	(*CreateRequest)(nil),              // 8: event.CreateRequest
+	(*CreateResponse)(nil),             // 9: event.CreateResponse
+	(*DeleteByIdRequest)(nil),          // 10: event.DeleteByIdRequest
+	(*DeleteByIdResponse)(nil),         // 11: event.DeleteByIdResponse
+	(*UpdateRequest)(nil),              // 12: event.UpdateRequest
+	(*RegisterRequest)(nil),            // 13: event.RegisterRequest
+	(*CancellRegisterRequest)(nil),     // 14: event.CancellRegisterRequest
+	(*GetAllByUserRequest)(nil),        // 15: event.GetAllByUserRequest
+	(*GetAllByUserResponse)(nil),       // 16: event.GetAllByUserResponse
+	(*GetAllUsersByEventRequest)(nil),  // 17: event.GetAllUsersByEventRequest
+	(*GetAllUsersByEventResponse)(nil), // 18: event.GetAllUsersByEventResponse
+	(*timestamppb.Timestamp)(nil),      // 19: google.protobuf.Timestamp
 }
 var file_event_event_proto_depIdxs = []int32{
-	17, // 0: event.EventElem.start_date:type_name -> google.protobuf.Timestamp
+	19, // 0: event.EventElem.start_date:type_name -> google.protobuf.Timestamp
 	2,  // 1: event.GetAllResponse.events:type_name -> event.EventElem
-	17, // 2: event.GetByIdResponse.start_date:type_name -> google.protobuf.Timestamp
-	17, // 3: event.CreateRequest.start_date:type_name -> google.protobuf.Timestamp
-	17, // 4: event.UpdateRequest.start_date:type_name -> google.protobuf.Timestamp
+	19, // 2: event.GetByIdResponse.start_date:type_name -> google.protobuf.Timestamp
+	19, // 3: event.CreateRequest.start_date:type_name -> google.protobuf.Timestamp
+	19, // 4: event.UpdateRequest.start_date:type_name -> google.protobuf.Timestamp
 	2,  // 5: event.GetAllByUserResponse.events:type_name -> event.EventElem
 	0,  // 6: event.Event.GetAll:input_type -> event.EmptyRequest
 	4,  // 7: event.Event.GetAllByCreator:input_type -> event.GetAllByCreatorRequest
@@ -1128,18 +1223,20 @@ var file_event_event_proto_depIdxs = []int32{
 	13, // 13: event.Event.Register:input_type -> event.RegisterRequest
 	14, // 14: event.Event.CancellRegister:input_type -> event.CancellRegisterRequest
 	15, // 15: event.Event.GetAllByUser:input_type -> event.GetAllByUserRequest
-	3,  // 16: event.Event.GetAll:output_type -> event.GetAllResponse
-	3,  // 17: event.Event.GetAllByCreator:output_type -> event.GetAllResponse
-	3,  // 18: event.Event.GetAllByStatus:output_type -> event.GetAllResponse
-	7,  // 19: event.Event.GetById:output_type -> event.GetByIdResponse
-	9,  // 20: event.Event.Create:output_type -> event.CreateResponse
-	11, // 21: event.Event.DeleteById:output_type -> event.DeleteByIdResponse
-	1,  // 22: event.Event.Update:output_type -> event.EmptyResponse
-	1,  // 23: event.Event.Register:output_type -> event.EmptyResponse
-	1,  // 24: event.Event.CancellRegister:output_type -> event.EmptyResponse
-	16, // 25: event.Event.GetAllByUser:output_type -> event.GetAllByUserResponse
-	16, // [16:26] is the sub-list for method output_type
-	6,  // [6:16] is the sub-list for method input_type
+	17, // 16: event.Event.GetAllUsersByEvent:input_type -> event.GetAllUsersByEventRequest
+	3,  // 17: event.Event.GetAll:output_type -> event.GetAllResponse
+	3,  // 18: event.Event.GetAllByCreator:output_type -> event.GetAllResponse
+	3,  // 19: event.Event.GetAllByStatus:output_type -> event.GetAllResponse
+	7,  // 20: event.Event.GetById:output_type -> event.GetByIdResponse
+	9,  // 21: event.Event.Create:output_type -> event.CreateResponse
+	11, // 22: event.Event.DeleteById:output_type -> event.DeleteByIdResponse
+	1,  // 23: event.Event.Update:output_type -> event.EmptyResponse
+	1,  // 24: event.Event.Register:output_type -> event.EmptyResponse
+	1,  // 25: event.Event.CancellRegister:output_type -> event.EmptyResponse
+	16, // 26: event.Event.GetAllByUser:output_type -> event.GetAllByUserResponse
+	18, // 27: event.Event.GetAllUsersByEvent:output_type -> event.GetAllUsersByEventResponse
+	17, // [17:28] is the sub-list for method output_type
+	6,  // [6:17] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name
 	6,  // [6:6] is the sub-list for extension extendee
 	0,  // [0:6] is the sub-list for field type_name
@@ -1156,7 +1253,7 @@ func file_event_event_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_event_event_proto_rawDesc), len(file_event_event_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
