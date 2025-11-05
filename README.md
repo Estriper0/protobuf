@@ -1,4 +1,4 @@
-# protobuf — Protobuf-определения для EventService
+# Protobuf — определения для EventService
 
 Этот репозиторий содержит **Protobuf-определения** (`*.proto`) и **сгенерированный Go-код** для gRPC-сервисов [EventService](https://github.com/Estriper0/EventService) и [AuthService](https://github.com/Estriper0/AuthService).
 
