@@ -996,7 +996,7 @@ func (x *GetAllByUserResponse) GetEvents() []*EventElem {
 
 type GetAllUsersByEventRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	EventId       string                 `protobuf:"bytes,1,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
+	EventId       int64                  `protobuf:"varint,1,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1031,11 +1031,11 @@ func (*GetAllUsersByEventRequest) Descriptor() ([]byte, []int) {
 	return file_event_event_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *GetAllUsersByEventRequest) GetEventId() string {
+func (x *GetAllUsersByEventRequest) GetEventId() int64 {
 	if x != nil {
 		return x.EventId
 	}
-	return ""
+	return 0
 }
 
 type GetAllUsersByEventResponse struct {
@@ -1154,7 +1154,7 @@ const file_event_event_proto_rawDesc = "" +
 	"\x14GetAllByUserResponse\x12(\n" +
 	"\x06events\x18\x01 \x03(\v2\x10.event.EventElemR\x06events\"6\n" +
 	"\x19GetAllUsersByEventRequest\x12\x19\n" +
-	"\bevent_id\x18\x01 \x01(\tR\aeventId\"7\n" +
+	"\bevent_id\x18\x01 \x01(\x03R\aeventId\"7\n" +
 	"\x1aGetAllUsersByEventResponse\x12\x19\n" +
 	"\busers_id\x18\x01 \x03(\tR\ausersId2\xdd\x05\n" +
 	"\x05Event\x124\n" +
